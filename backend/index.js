@@ -5,7 +5,6 @@ const dotenv = require("dotenv");
 const connectDB = require("./db");
 const colors = require("colors");
 const bcrypt = require("bcrypt");
-const { register } = require("./controllers/AuthController");
 const authRoute = require("./routes/authRoutes");
 dotenv.config();
 
@@ -15,7 +14,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(authRoute);
+app.use("/api/v1", authRoute);
 
 // app.post("/register", register);
 
