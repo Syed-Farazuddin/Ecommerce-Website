@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GiShoppingBag } from "react-icons/gi";
+import toast from "react-hot-toast";
 
 function Register() {
-  const handleSubmit = async (event) => {
+  const navigate = useNavigate();
+  const handleSubmit = async () => {
     console.log(name, email, password, address, phone);
     const response = await axios.post("http://localhost:8080/api/v1/register", {
       name,
@@ -14,6 +16,10 @@ function Register() {
       phone,
     });
     console.log(response);
+    if (response?.data?.success) {
+      toast.success(response.data && response.data.message);
+      navigate("/login");
+    }
   };
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

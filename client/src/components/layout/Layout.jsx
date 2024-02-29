@@ -4,6 +4,8 @@ import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Helmet } from "react-helmet";
+import toast, { Toaster } from "react-hot-toast";
+
 function Layout({ children, title, description, keywords, author }) {
   return (
     <>
@@ -16,7 +18,10 @@ function Layout({ children, title, description, keywords, author }) {
         <title>{`${title} - Shopify`}</title>
       </Helmet>
       <Navbar />
-      <main className="mt-20">{children}</main>
+      <main className="mt-10">
+        {children}
+        <Toaster />
+      </main>
       <Footer />
     </>
   );
