@@ -85,6 +85,7 @@ const login = async (req, res) => {
         email: user.email,
         phone: user.phone,
         address: user.address,
+        password: user.password,
       },
       token,
     });
@@ -94,4 +95,9 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+const testController = (req, res) => {
+  res.send("Protected Route");
+  console.log("Admin has logged in");
+};
+
+module.exports = { register, login, testController };
