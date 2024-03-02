@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import Layout from "../../components/layout/Layout";
 import { GlobalContext } from "../../context/context";
 
 function Login() {
+  const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [invalidPass, setInvalidPass] = useState(false);
@@ -29,7 +30,7 @@ function Login() {
         token: response.data.token,
       });
       localStorage.setItem("auth", JSON.stringify(response.data));
-      navigate("/");
+      navigate(location.state || "/");
     } else {
       toast.error(response.data.message);
     }

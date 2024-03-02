@@ -8,10 +8,15 @@ import About from "./pages/AboutPage";
 import PageNotFound from "./pages/PageNotFound";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import Dashboard from "./pages/user/Dashboard";
+import PrivateRoute from "./components/routes/PrivateRoutes.jsx";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="dashboard" element={<PrivateRoute />}>
+          <Route path="" element={<Dashboard />} />
+        </Route>
         <Route path="/" element={<Homepage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
