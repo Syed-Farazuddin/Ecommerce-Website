@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Circles } from "react-loader-spinner";
+import { RotatingLines } from "react-loader-spinner";
 import { useNavigate, useLocation } from "react-router-dom";
 
 function Spinner() {
@@ -19,7 +19,7 @@ function Spinner() {
   return (
     <div className="h-[100vh] flex flex-col gap-10 items-center justify-center">
       <h1 className="text-2xl font-bold">Redirecting you in {count} seconds</h1>
-      <Circles
+      {/* <Circles
         height="150"
         width="150"
         color="#000"
@@ -27,6 +27,17 @@ function Spinner() {
         wrapperStyle={{}}
         wrapperClass=""
         visible={true}
+      /> */}
+      <RotatingLines
+        visible={true}
+        height="150"
+        width="150"
+        color="grey"
+        strokeWidth="5"
+        animationDuration="0.75"
+        ariaLabel="rotating-lines-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
       />
     </div>
   );
