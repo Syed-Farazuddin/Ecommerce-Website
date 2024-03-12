@@ -20,7 +20,7 @@ function Navbar() {
     <div className="p-4 shadow-xl fixed top-0 right-0 left-0 flex justify-between z-50 bg-white">
       <Link to={"/"}>
         <h1 className="font-bold text-4xl font-serif flex items-center justify-center text-red-400 gap-2">
-          Shopify <GiShoppingBag />
+          Shoppers <GiShoppingBag />
         </h1>
       </Link>
       <ul className="flex gap-8 justify-center items-center">

@@ -4,6 +4,8 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import Layout from "../../components/layout/Layout";
 import { GlobalContext } from "../../context/context";
+import { HiOutlineMail } from "react-icons/hi";
+import { IoLockClosedOutline } from "react-icons/io5";
 
 function Login() {
   const location = useLocation();
@@ -38,7 +40,7 @@ function Login() {
   return (
     <Layout title={"login"}>
       <div className="flex items-center h-[100vh]">
-        <div className="w-[60%] flex justify-center items-center ml-20">
+        <div className="w-[80%] flex justify-center items-center ml-20">
           <img src={"/bluelogin.png"} alt="" />
         </div>
         <div className="w-full flex flex-col justify-center mr-20 border-2 border-slate-200 rounded-lg p-12 gap-6">
@@ -54,25 +56,35 @@ function Login() {
               handleSubmit();
             }}
           >
-            <input
-              value={email}
-              className=" px-6 outline-none py-2 rounded-md border-[1px]  border-slate-400"
-              type="email"
-              placeholder="Enter your email"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
+            <div className="flex justify-between border-[1px] items-center border-slate-400 px-6 py-2 rounded-md ">
+              <input
+                value={email}
+                className="outline-none border-none"
+                type="email"
+                placeholder="Enter your email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+              <span className="text-slate-400 text-[20px]">
+                <HiOutlineMail />
+              </span>
+            </div>
 
-            <input
-              value={password}
-              className=" px-6 outline-none py-2 rounded-md border-[1px]  border-slate-400"
-              type="password"
-              placeholder="Enter your password"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
+            <div className="flex justify-between border-[1px] items-center border-slate-400 px-6 py-2 rounded-md ">
+              <input
+                value={password}
+                className="outline-none border-none"
+                type="password"
+                placeholder="Enter your password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+              <span className="text-slate-400 text-[20px]">
+                <IoLockClosedOutline />
+              </span>
+            </div>
 
             <p className="text-red-500">
               {invalidPass

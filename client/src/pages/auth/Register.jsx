@@ -3,6 +3,11 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Layout from "../../components/layout/Layout";
+import { FaRegUser } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import { IoLockClosedOutline } from "react-icons/io5";
+import { FiPhone } from "react-icons/fi";
+import { SlLocationPin } from "react-icons/sl";
 
 function Register() {
   const navigate = useNavigate();
@@ -28,8 +33,8 @@ function Register() {
   const [phone, setPhone] = useState("");
   return (
     <Layout>
-      <div className="flex justify-center items-center h-[100vh]">
-        <div className="w-[60%] m-20 flex flex-col items-center justify-center">
+      <div className="flex justify-center items-center my-20 pt-10">
+        <div className="w-[80%] m-20 flex flex-col items-center justify-center">
           <img src="/shop.png" alt="" />
         </div>
         <div className="w-full flex flex-col mr-20 border-[2px] border-slate-200 rounded-lg p-12 gap-6">
@@ -44,55 +49,77 @@ function Register() {
               handleSubmit();
             }}
           >
-            <input
-              value={name}
-              className=" px-6 outline-none py-2 rounded-md border-[1px] border-slate-400"
-              type="text"
-              placeholder="Enter your name"
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
+            <div className="flex items-center justify-between px-6 py-2 rounded-md border-[1px] border-slate-400">
+              <input
+                value={name}
+                className="outline-none border-none"
+                type="text"
+                placeholder="Enter your name"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+              <span className="text-[18px] text-slate-400">
+                <FaRegUser />
+              </span>
+            </div>
+            <div className="flex justify-between border-[1px] items-center border-slate-400 px-6 py-2 rounded-md ">
+              <input
+                value={email}
+                className="outline-none border-none"
+                type="email"
+                placeholder="Enter your email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+              <span className="text-slate-400 text-[20px]">
+                <HiOutlineMail />
+              </span>
+            </div>
+            <div className="flex justify-between border-[1px] items-center border-slate-400 px-6 py-2 rounded-md ">
+              <input
+                value={password}
+                className="outline-none border-none"
+                type="password"
+                placeholder="Enter your password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+              <span className="text-slate-400 text-[20px]">
+                <IoLockClosedOutline />
+              </span>
+            </div>
+            <div className="flex justify-between border-[1px] items-center border-slate-400 px-6 py-2 rounded-md ">
+              <input
+                value={phone}
+                className="outline-none border-none"
+                type="text"
+                placeholder="Enter your phone number"
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                }}
+              />
+              <span className="text-slate-400 text-[20px]">
+                <FiPhone />
+              </span>
+            </div>
+            <div className="flex justify-between border-[1px] items-center border-slate-400 px-6 py-2 rounded-md ">
+              <input
+                value={address}
+                className="outline-none border-none"
+                type="text"
+                placeholder="Enter your Address"
+                onChange={(e) => {
+                  setAddress(e.target.value);
+                }}
+              />
+              <span className="text-slate-400 text-[20px]">
+                <SlLocationPin />
+              </span>
+            </div>
 
-            <input
-              value={email}
-              className=" px-6 outline-none py-2 rounded-md border-[1px] border-slate-400"
-              type="email"
-              placeholder="Enter your email"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-
-            <input
-              value={password}
-              className=" px-6 outline-none py-2 rounded-md border-[1px] border-slate-400"
-              type="password"
-              placeholder="Enter your password"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-
-            <input
-              value={phone}
-              className=" px-6 outline-none py-2 rounded-md border-[1px] border-slate-400"
-              type="text"
-              placeholder="Enter your phone number"
-              onChange={(e) => {
-                setPhone(e.target.value);
-              }}
-            />
-
-            <input
-              value={address}
-              className=" px-6 outline-none py-2 rounded-md border-[1px] border-slate-400"
-              type="text"
-              placeholder="Enter your Address"
-              onChange={(e) => {
-                setAddress(e.target.value);
-              }}
-            />
             <button
               type="submit"
               className="bg-red-400 font-bold rounded-lg py-2 text-white"
