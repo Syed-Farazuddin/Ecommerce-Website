@@ -8,6 +8,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import { IoLockClosedOutline } from "react-icons/io5";
 import { FiPhone } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
+import { FaQuestion } from "react-icons/fa";
 
 function Register() {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ function Register() {
       email,
       password,
       address,
+      answer,
       phone,
     });
     console.log(response);
@@ -27,6 +29,8 @@ function Register() {
     }
   };
   const [name, setName] = useState("");
+  const [answer, setAnswer] = useState("");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
@@ -89,6 +93,20 @@ function Register() {
               />
               <span className="text-slate-400 text-[20px]">
                 <IoLockClosedOutline />
+              </span>
+            </div>
+            <div className="flex justify-between border-[1px] items-center border-slate-400 px-6 py-2 rounded-md ">
+              <input
+                value={answer}
+                className="outline-none border-none"
+                type="text"
+                placeholder="What's your favorite sport?"
+                onChange={(e) => {
+                  setAnswer(e.target.value);
+                }}
+              />
+              <span className="text-slate-400 text-[20px]">
+                <FaQuestion />
               </span>
             </div>
             <div className="flex justify-between border-[1px] items-center border-slate-400 px-6 py-2 rounded-md ">

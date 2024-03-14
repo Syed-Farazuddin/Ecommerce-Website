@@ -2,12 +2,50 @@ const userModel = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const { hashPassword, comparePassword } = require("../helpers/authHelpers");
 
+const forgotPasswordController = async (req, res) => {
+  try {
+    const { email, answer, newPassword } = req.body;
+    if (!email) {
+      res.status(400).send({ message: "Email is required" });
+    }
+    if (!answer) {
+      res.status(400).send({ message: "Question is required" });
+    }
+    if (!newPassword) {
+      res.status(400).send({ message: "New password is required" });
+    }
+    // Check email and answer
+    const user = await userModel.findOne({ email, answer });
+    if (!user) {
+      return res
+        .status(404)
+        .send({ success: false, message: "Wrong Email or Answer" });
+    }
+    const hashed = await hashPassword(newPassword);
+    await userModel.findByIdAndUpdate(user._id, { password: hashed });
+    res.status(200).send({
+      success: true,
+      message: "Password Reset Successfully",
+    });
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({
+      success: false,
+      message: "Something went wrong",
+      e,
+    });
+  }
+};
+
 const register = async (req, res) => {
   try {
-    const { name, email, password, phone, address } = req.body;
+    const { name, email, password, phone, address, answer } = req.body;
     // Validation
     if (!name) {
       return res.send({ error: "Name is required" });
+    }
+    if (!answer) {
+      return res.send({ error: "Answer is required" });
     }
     if (!email) {
       return res.send({ error: "Email is required" });
@@ -35,6 +73,7 @@ const register = async (req, res) => {
       email,
       phone,
       address,
+      answer,
       password: hashedPassword,
     }).save();
     res.status(201).send({
@@ -99,4 +138,4 @@ const testController = (req, res) => {
   console.log("Admin has logged in");
 };
 
-module.exports = { register, login, testController };
+module.exports = { register, login, testController, forgotPasswordController };

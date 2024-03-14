@@ -4,6 +4,7 @@ const {
   register,
   login,
   testController,
+  forgotPasswordController,
 } = require("../controllers/AuthController");
 
 const router = express.Router();
@@ -18,4 +19,5 @@ router.get("/user-auth", requireSignIn, (req, res) => {
   res.status(200).send({ ok: true });
 });
 
+router.post("/forgot-password", forgotPasswordController);
 module.exports = router;
