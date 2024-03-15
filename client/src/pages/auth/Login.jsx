@@ -92,10 +92,10 @@ function Login() {
                 : ""}
             </p>
             <Link
-              className="text-center hover:underline"
+              className="text-center hover:underline hover:text-red-600"
               to={"/forgot-password"}
             >
-              <p className="text-center inline-block text-red-500 text-lg hover:underline">
+              <p className="text-center inline-block text-lg hover:underline hover:text-red-500">
                 Forgot Password
               </p>
             </Link>
