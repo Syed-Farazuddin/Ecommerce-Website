@@ -62,10 +62,11 @@ function Navbar() {
               >
                 <button
                   type="button"
-                  className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 items-center"
+                  className="flex items-center gap-1 border-[1px] border-slate-300 p-2 rounded-lg hover:bg-slate-50 capitalize"
                   id="menu-button"
                 >
-                  User
+                  {userAuth?.user?.name.slice(0, 10)}
+                  {userAuth?.user?.name.length > 10 ? "..." : ""}
                   <p>
                     <FaRegCircleUser />
                   </p>
@@ -91,7 +92,7 @@ function Navbar() {
                 <div className="py-1" role="none">
                   <Link to={`/dashboard`}>
                     <li
-                      className={`flex px-4 py-2 gap-1 text-lg hover:text-red-400`}
+                      className={`flex px-4 py-2 gap-1 text-lg hover:text-red-500 hover:font-bold hover:bg-slate-100`}
                     >
                       Dashboard
                     </li>
@@ -103,7 +104,7 @@ function Navbar() {
                     }}
                   >
                     <li
-                      className={`flex px-4 py-2 gap-2 text-lg hover:text-red-400 items-center`}
+                      className={`flex px-4 py-2 gap-1 text-lg hover:text-red-500 hover:font-bold hover:bg-slate-100`}
                     >
                       Logout
                     </li>
