@@ -90,7 +90,11 @@ function Navbar() {
                 aria-labelledby="menu-button"
               >
                 <div className="py-1" role="none">
-                  <Link to={`/dashboard`}>
+                  <Link
+                    to={`/dashboard/${
+                      userAuth?.user?.role === 1 ? "admin" : "user"
+                    }`}
+                  >
                     <li
                       className={`flex px-4 py-2 gap-1 text-lg hover:text-red-500 hover:font-bold hover:bg-slate-100`}
                     >
